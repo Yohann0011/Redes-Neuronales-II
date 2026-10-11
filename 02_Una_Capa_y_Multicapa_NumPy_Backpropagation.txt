@@ -1,0 +1,166 @@
+NumPy: 2.4.6 | entorno listo
+Matriz de características X: (20, 3) -> (20 frutas, 3 características)
+Vector de etiquetas   y: (20,) -> (0 = manzana, 1 = banano)
+
+Primeras 3 manzanas:
+ [[1.50e+02 7.50e+00 1.00e-01]
+ [1.60e+02 8.00e+00 1.50e-01]
+ [1.45e+02 7.20e+00 5.00e-02]]
+Primeros 3 bananos:
+ [[120.    18.     0.9 ]
+ [125.    19.     0.95]
+ [115.    17.5    0.85]]
+X_train: (16, 3) | X_test: (4, 3)
+y_train: (16,) | y_test: (4,)
+Distribución de clases en prueba: [2 2]
+
+Media de cada característica en entrenamiento (debe ser ~0):
+[0. 0. 0.]
+Desviación estándar (debe ser ~1):
+[1. 1. 1.]
+z            : [-3. -1.  0.  1.  3.]
+sigmoid(z)   : [0.0474 0.2689 0.5    0.7311 0.9526]
+relu(z)      : [0. 0. 0. 1. 3.]
+relu'(z)     : [0. 0. 0. 1. 1.]
+
+Error si predice 0.5 para y=1 : 0.6931
+Error si predice 0.99 para y=1: 0.0101
+Error si predice 0.01 para y=1: 4.6052
+-> La pérdida crece cuando la red está segura y se equivoca: por eso penaliza más los errores graves.
+Pesos iniciales W = [ 0.004967 -0.001383  0.006477] | b = 0.0
+
+Primeras 5 predicciones (probabilidades): [0.5002 0.5004 0.4998 0.4996 0.5002]
+Primeras 5 etiquetas reales             : [0 0 1 1 1]
+
+Error inicial (BCE): 0.6929
+-> Un valor cercano a ln(2) = 0.6931 indica que la red predice ~0.5 para todo: aún no aprende.
+Pérdida antes de actualizar      : 0.692932
+dZ (primeros 5)                  : [ 0.50019  0.50039 -0.50025 -0.50041 -0.49978]
+dW = X^T dZ / m                  : [ 0.466997 -0.497071 -0.497324]
+db                               : 0.0
+
+W antes: [ 0.004967 -0.001383  0.006477] -> W después: [-0.041733  0.048325  0.056209]
+b antes: 0.0         -> b después: -0.0
+
+Pérdida después de actualizar    : 0.624232
+¿Disminuyó? True
+Época     0 | Loss 0.692932
+Época   400 | Loss 0.009274
+Época   800 | Loss 0.004618
+Época  1200 | Loss 0.003075
+Época  1600 | Loss 0.002306
+Época  1999 | Loss 0.001846
+
+Pesos finales W = [-1.9852  2.2612  2.2839]
+Bias final    b = -0.0272
+Pérdida inicial: 0.692932
+Pérdida final  : 0.001846
+Reducción      : 99.73 %
+=== RED DE UNA CAPA (Sigmoide + BCE + backpropagation) ===
+ Fruta  P(banano)   Predicción         Real  Resultado
+     1     0.0056      MANZANA      MANZANA    ACIERTO
+     2     0.0009      MANZANA      MANZANA    ACIERTO
+     3     0.9978       BANANO       BANANO    ACIERTO
+     4     0.9979       BANANO       BANANO    ACIERTO
+
+Accuracy en prueba: 1.0
+Matriz de confusión:
+ [[2 0]
+ [0 2]]
+W1: (3, 4) -> conecta 3 entradas con 4 neuronas ocultas
+b1: (1, 4)
+W2: (4, 1) -> conecta 4 neuronas ocultas con 1 salida
+b2: (1, 1)
+
+W1 =
+ [[ 0.4056 -0.1129  0.5288  1.2435]
+ [-0.1912 -0.1912  1.2894  0.6266]
+ [-0.3833  0.443  -0.3784 -0.3803]]
+W2 = [ 0.1711 -1.3529 -1.2197 -0.3976]
+
+Total de parámetros entrenables: 21
+Activaciones de la capa oculta A1 (forma (16, 4) ):
+[[0.9874 0.     0.     1.1429]
+ [1.0559 0.     0.     1.3316]
+ [0.     0.3724 0.0727 0.    ]
+ [0.     0.3676 0.1296 0.    ]
+ [0.     0.3623 0.3955 0.    ]
+ [0.     0.3522 0.7183 0.    ]]
+
+Neuronas 'muertas' (siempre en 0) en la capa oculta: 0 de 4
+
+Primeras 5 probabilidades de salida: [0.4291 0.4137 0.3561 0.3418 0.2744]
+Etiquetas reales                   : [0 0 1 1 1]
+
+Pérdida inicial (BCE): 0.9529
+Pérdida actual                  : 0.952865
+
+dZ2 (primeros 5)                : [ 0.42911  0.41368 -0.64392 -0.65825 -0.72563]
+dW2 (gradientes capa de salida) : [ 0.208053 -0.128823 -0.153272  0.188029]
+db2                             : [-0.13912]
+
+dA1 (error que llega a la capa oculta), primeras 3 filas:
+ [[ 0.073418 -0.580546 -0.523391 -0.170615]
+ [ 0.070777 -0.559661 -0.504563 -0.164477]
+ [-0.110171  0.871161  0.785396  0.256023]]
+dZ1 tras multiplicar por ReLU'(Z1), primeras 3 filas:
+ [[ 0.073418 -0.       -0.       -0.170615]
+ [ 0.070777 -0.       -0.       -0.164477]
+ [-0.        0.871161  0.785396  0.      ]]
+dW1 (gradientes capa oculta):
+ [[ 0.033361 -0.450459 -0.450928 -0.074916]
+ [-0.03828   0.492116  0.465746  0.074185]
+ [-0.038474  0.490994  0.462845  0.07385 ]]
+db1                             : [ 0.038173  0.490061  0.416972 -0.075493]
+
+Norma del gradiente |dW1| = 1.158135
+Norma del gradiente |dW2| = 0.34457
+Época     0 | Loss 0.952865
+Época   500 | Loss 0.055464
+Época  1000 | Loss 0.025895
+Época  1500 | Loss 0.016626
+Época  2000 | Loss 0.012180
+Época  2500 | Loss 0.009587
+Época  2999 | Loss 0.007896
+
+W1 final =
+ [[ 0.4751 -0.017   1.174   1.652 ]
+ [-0.3647 -0.2951  0.205  -0.1614]
+ [-0.562   0.3391 -1.4779 -1.1871]]
+W2 final = [-0.6199 -1.3377 -1.8684 -1.6722]
+=== RED MULTICAPA 3 -> 4 -> 1 (ReLU + Sigmoide) ===
+ Fruta  P(banano)   Predicción         Real  Resultado
+     1   0.014244      MANZANA      MANZANA    ACIERTO
+     2   0.000021      MANZANA      MANZANA    ACIERTO
+     3   0.985087       BANANO       BANANO    ACIERTO
+     4   0.985087       BANANO       BANANO    ACIERTO
+
+Accuracy en prueba: 1.0
+Matriz de confusión:
+ [[2 0]
+ [0 2]]
+
+Activaciones de la capa oculta en prueba (qué neurona responde a cada fruta):
+[[1.2102 0.     2.1271 2.2145]
+ [1.6851 0.     3.5213 4.3988]
+ [0.     0.     0.     0.    ]
+ [0.     0.     0.     0.    ]]
+  Época    Loss ReLU   Loss Sigmoide
+      0     0.952865        1.022297
+    500     0.055464        0.114070
+   1000     0.025895        0.050687
+   1500     0.016626        0.029897
+   2000     0.012180        0.020223
+   2500     0.009587        0.014925
+   2999     0.007896        0.011692
+
+Pérdida final  ReLU    : 0.007896
+Pérdida final  Sigmoide: 0.011692
+Norma ||dW1|| con ReLU en la capa oculta    : 1.158135e+00
+Norma ||dW1|| con Sigmoide en la capa oculta: 4.375875e-01
+Razón ReLU / Sigmoide                       : 2.65x
+Modelo                            Loss prueba   Accuracy
+--------------------------------------------------------
+Una capa · Sigmoide                  0.002713     1.0000
+Multicapa · ReLU oculta              0.011104     1.0000
+Multicapa · Sigmoide oculta          0.013006     1.0000

@@ -1,0 +1,44 @@
+{
+  "01_Perceptron_NumPy.ipynb": {
+    "celdas_codigo": 10,
+    "celdas_md": 12,
+    "figuras": 0,
+    "errores": 0,
+    "caracteres_salida": 3284
+  },
+  "02_Una_Capa_y_Multicapa_NumPy_Backpropagation.ipynb": {
+    "celdas_codigo": 18,
+    "celdas_md": 16,
+    "figuras": 0,
+    "errores": 0,
+    "caracteres_salida": 5899
+  },
+  "03_Frutas_Binario_Keras.ipynb": {
+    "celdas_codigo": 12,
+    "celdas_md": 12,
+    "figuras": 0,
+    "errores": 0,
+    "caracteres_salida": 3148
+  },
+  "04_Frutas_Multiclase_Keras.ipynb": {
+    "celdas_codigo": 11,
+    "celdas_md": 9,
+    "figuras": 0,
+    "errores": 0,
+    "caracteres_salida": 3472
+  },
+  "05_MNIST_Keras.ipynb": {
+    "celdas_codigo": 18,
+    "celdas_md": 12,
+    "figuras": 0,
+    "errores": 0,
+    "caracteres_salida": 6180
+  },
+  "06_MNIST_PyTorch.ipynb": {
+    "celdas_codigo": 15,
+    "celdas_md": 14,
+    "figuras": 0,
+    "errores": 0,
+    "caracteres_salida": 5257
+  }
+}

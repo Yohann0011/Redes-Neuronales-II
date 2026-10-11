@@ -1,0 +1,74 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791644414.323464   24058 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791644417.069815   24058 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+TensorFlow: 2.21.0
+Keras     : 3.15.1
+Backend   : tensorflow
+GPU disponible: False
+Matriz de características X: (20, 3) -> (20 frutas, 3 características)
+Vector de etiquetas   y: (20,) -> (0 = manzana, 1 = banano)
+
+Primeras 3 manzanas:
+ [[1.50e+02 7.50e+00 1.00e-01]
+ [1.60e+02 8.00e+00 1.50e-01]
+ [1.45e+02 7.20e+00 5.00e-02]]
+Primeros 3 bananos:
+ [[120.    18.     0.9 ]
+ [125.    19.     0.95]
+ [115.    17.5    0.85]]
+X_train: (16, 3) | X_test: (4, 3)
+y_train: (16,) | y_test: (4,)
+Distribución de clases en prueba: [2 2]
+
+Media de cada característica en entrenamiento (debe ser ~0):
+[0. 0. 0.]
+Desviación estándar (debe ser ~1):
+[1. 1. 1.]
+X_train: (16, 3) float64
+y_train: (16, 1) float32
+X_test : (4, 3) | y_test: (4, 1)
+Parámetros entrenables declarados por Keras: 21
+Parámetros de la implementación NumPy       : 21
+Coinciden: True
+Optimizador: Adam
+Pérdida    : binary_crossentropy
+Métricas   : ['loss', 'compile_metrics']
+Error inicial (época 1)  : 1.392065
+Error final   (época 200): 0.01708
+
+  Época        Loss   Accuracy
+      1    1.392065     0.5000
+     25    0.205516     1.0000
+     50    0.112124     1.0000
+    100    0.047774     1.0000
+    150    0.026606     1.0000
+    200    0.017080     1.0000
+=== RESULTADOS EN EL CONJUNTO DE PRUEBA ===
+Error (binary_crossentropy): 0.017033
+Accuracy                   : 1.0
+
+ Fruta   P(banano)   Predicción        Real  Resultado
+     1    0.033234      MANZANA     MANZANA    ACIERTO
+     2    0.033234      MANZANA     MANZANA    ACIERTO
+     3    0.999720       BANANO      BANANO    ACIERTO
+     4    0.999746       BANANO      BANANO    ACIERTO
+Fruta nueva (peso, longitud, amarillo): [124.    19.     0.94]
+Valores escalados                     : [-0.9271  0.9614  0.9859]
+Probabilidad de ser banano            : 0.999793
+La red piensa que es                  : BANANO
+Pesos de la capa oculta W1 (3x4):
+[[ 0.2053 -0.9923 -0.9678  0.3109]
+ [-0.3664  1.6038  1.5694 -0.1699]
+ [ 0.455   1.5742 -0.0654  0.3394]]
+Bias de la capa oculta b1: [-0.4214  1.3422  0.7045 -0.4553]
+
+Pesos de la salida W2 (4x1): [0.7238 1.3785 1.4679 0.1543]
+Bias de la salida  b2       : -3.3704
+
+Activaciones ReLU de la capa oculta para las frutas de prueba:
+[[0.     0.     0.     0.    ]
+ [0.     0.     0.     0.    ]
+ [0.     5.066  3.1121 0.    ]
+ [0.     4.9991 3.2409 0.    ]]
+-> Las neuronas en 0 están inactivas para esa fruta; las positivas aportan evidencia.

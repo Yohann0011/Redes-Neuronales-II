@@ -1,0 +1,73 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791644432.956849   25710 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791644434.533555   25710 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+TensorFlow: 2.21.0 | Keras: 3.15.1
+X_multi: (30, 3) -> (30 frutas, 3 características)
+y_multi: (30,) -> clases: [0 1 2]
+Ejemplos por clase: [10 10 10]
+
+MANZANA   peso  158.0 g | longitud  7.85 cm | amarillo 0.12
+BANANO    peso  121.6 g | longitud 18.80 cm | amarillo 0.92
+NARANJA   peso  188.0 g | longitud  8.39 cm | amarillo 0.38
+X_train_multi: (24, 3) | X_test_multi: (6, 3)
+Clases en entrenamiento: [8 8 8]
+Clases en prueba       : [2 2 2]
+Etiquetas de prueba    : [2 1 2 0 1 0]
+Logits z            : [2.  1.  0.1]
+Softmax manual      : [0.659  0.2424 0.0986] | suma: 1.0
+Clase elegida argmax: 0
+
+Logits z            : [0.4 2.8 1.1]
+Softmax             : [0.0712 0.7853 0.1435] | argmax: 1
+-> Softmax conserva el orden de los logits y los normaliza para que sumen 1.
+Error inicial: 1.469859
+Error final  : 0.005629
+
+  Época       Loss     Acc   Val loss  Val acc
+      1    1.46986   0.000    1.30948    0.000
+     50    0.10030   0.947    0.00284    1.000
+    100    0.05633   1.000    0.00054    1.000
+    150    0.03043   1.000    0.00021    1.000
+    200    0.01625   1.000    0.00011    1.000
+    250    0.00920   1.000    0.00007    1.000
+    300    0.00563   1.000    0.00005    1.000
+=== CLASIFICACIÓN MULTICLASE (manzana / banano / naranja) ===
+Loss en prueba  : 0.003006
+Accuracy (Keras): 1.0
+Accuracy (sklearn, verificación): 1.0
+
+  #  P(manzana)  P(banano)  P(naranja)   Predicción       Real  Resultado
+  1      0.0001     0.0000      0.9999      NARANJA    NARANJA    ACIERTO
+  2      0.0001     0.9999      0.0000       BANANO     BANANO    ACIERTO
+  3      0.0000     0.0000      1.0000      NARANJA    NARANJA    ACIERTO
+  4      1.0000     0.0000      0.0000      MANZANA    MANZANA    ACIERTO
+  5      0.0001     0.9999      0.0000       BANANO     BANANO    ACIERTO
+  6      0.9825     0.0006      0.0169      MANZANA    MANZANA    ACIERTO
+
+Cada fila de probabilidades suma 1: True
+Matriz de confusión (filas = reales, columnas = predichas):
+[[2 0 0]
+ [0 2 0]
+ [0 0 2]]
+
+              precision    recall  f1-score   support
+
+     MANZANA       1.00      1.00      1.00         2
+      BANANO       1.00      1.00      1.00         2
+     NARANJA       1.00      1.00      1.00         2
+
+    accuracy                           1.00         6
+   macro avg       1.00      1.00      1.00         6
+weighted avg       1.00      1.00      1.00         6
+
+Probabilidad máxima promedio en la malla: 0.936
+Zonas con confianza < 0.60 (fronteras difusas): 4.20 % del área
+Fruta nueva (peso, longitud, amarillo): [190.     8.5    0.38]
+Probabilidades por clase:
+   MANZANA   0.0000  
+   BANANO    0.0000  
+   NARANJA   1.0000  ██████████████████████████████
+
+Clase predicha (argmax): 2
+La red piensa que es     : NARANJA

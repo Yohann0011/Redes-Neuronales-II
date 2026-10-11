@@ -1,0 +1,137 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791644462.543707   30570 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791644463.915123   30570 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+TensorFlow: 2.21.0 | Keras: 3.15.1
+Backend    : tensorflow
+Dispositivos: ['CPU']
+Archivo: /tmp/.keras/datasets/mnist.npz
+
+Entrenamiento: (60000, 28, 28) (60000,) uint8
+Prueba       : (10000, 28, 28) (10000,) float32
+Rango de píxeles (entrenamiento): 0 - 255
+Rango de píxeles (prueba)       : 0.0 - 1.0
+Clases: [0 1 2 3 4 5 6 7 8 9]
+Ejemplos por clase: [5923 6742 5958 6131 5842 5421 5918 6265 5851 5949]
+
+Primer ejemplo: etiqueta real = 5 | forma = (28, 28)
+Memoria del conjunto de entrenamiento: 44.9 MB (uint8)
+Lote de 5 imágenes -> (5, 784) float32
+Mínimo: 0.0 | Máximo: 1.0
+
+Primeros 12 valores del vector de 784 píxeles (zona de borde, casi todo ceros):
+[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+
+Bloque central 8x12 de la misma imagen (donde sí hay trazo):
+[[0.   0.05 0.   0.6  0.99 0.35 0.   0.   0.   0.   0.   0.  ]
+ [0.   0.   0.   0.55 0.99 0.75 0.01 0.   0.   0.   0.   0.  ]
+ [0.   0.   0.   0.04 0.75 0.99 0.27 0.   0.   0.   0.   0.  ]
+ [0.   0.   0.   0.   0.14 0.95 0.88 0.63 0.42 0.   0.   0.  ]
+ [0.   0.   0.   0.   0.   0.32 0.94 0.99 0.99 0.47 0.1  0.  ]
+ [0.   0.   0.   0.   0.   0.   0.18 0.73 0.99 0.99 0.59 0.11]
+ [0.   0.   0.   0.   0.   0.   0.   0.06 0.36 0.99 0.99 0.73]
+ [0.   0.   0.   0.   0.   0.   0.   0.   0.   0.98 0.99 0.98]]
+
+Verificación: 784 = 784 -> True
+
+Capas del modelo            : ['Dense', 'Dense']
+¿Hay alguna capa convolucional? False
+¿Hay alguna capa de pooling?   False
+Parámetros entrenables      : 101,770
+-> Verificación de la restricción: red 100 % densa (perceptrón multicapa).
+Pérdida    : SparseCategoricalCrossentropy
+Optimizador: Adam | lr = <Variable path=adam/learning_rate, shape=(), dtype=float32, value=0.0010000000474974513>
+
+Funciones de entrenamiento y evaluación definidas correctamente
+Etiqueta real de la imagen 0: 5
+Probabilidades sin entrenar : [0.0849 0.0669 0.0561 0.13   0.0804 0.1989 0.1206 0.1231 0.1115 0.0275]
+Suma de probabilidades    : 1.0
+Pérdida inicial             : 1.615
+Referencia teórica -ln(1/10): 2.3026
+ Época      Loss  Accuracy   Val loss   Val acc
+     1    0.3740    0.9013     0.1691    0.9553
+     2    0.1700    0.9539     0.1283    0.9658
+     3    0.1217    0.9673     0.1023    0.9723
+     4    0.0946    0.9747     0.0922    0.9740
+     5    0.0760    0.9805     0.0882    0.9760
+
+Tiempo total: 8.5 s (1.7 s por época)
+Lotes por época: 422
+=== RESULTADOS MNIST · TensorFlow + Keras ===
+Error de prueba    : 0.089279
+Accuracy de prueba : 0.9735
+Imágenes correctas : 9735 de 10000
+Imágenes erróneas  : 265
+
+Confianza promedio en aciertos: 0.9764
+Confianza promedio en errores : 0.6941
+-> El modelo está mucho menos seguro cuando se equivoca: la probabilidad máxima es
+   una señal útil para decidir cuándo requerir revisión humana.
+=== PRIMERAS 10 IMÁGENES DE PRUEBA ===
+ Imagen  Real  Predicción  Confianza  Resultado
+      1     7           7     0.9997    ACIERTO
+      2     2           2     0.9994    ACIERTO
+      3     1           1     0.9953    ACIERTO
+      4     0           0     0.9999    ACIERTO
+      5     4           4     0.9899    ACIERTO
+      6     1           1     0.9934    ACIERTO
+      7     4           4     0.9980    ACIERTO
+      8     9           9     0.9862    ACIERTO
+      9     5           6     0.7301      ERROR
+     10     9           9     0.9741    ACIERTO
+
+Vector completo de probabilidades de la imagen 1:
+[0.00000e+00 0.00000e+00 3.10000e-05 2.91000e-04 0.00000e+00 3.00000e-06
+ 0.00000e+00 9.99653e-01 7.00000e-06 1.30000e-05] -> suma: 1.0
+Cantidad total de errores: 265 de 10000
+Tasa de error            : 2.65 %
+
+Primeros 15 errores (índice | real -> predicho | confianza):
+      8 | 5 -> 6 | 0.7301
+    247 | 4 -> 2 | 0.5578
+    259 | 6 -> 0 | 0.8357
+    321 | 2 -> 7 | 0.9853
+    340 | 5 -> 3 | 0.8896
+    445 | 6 -> 0 | 0.8496
+    478 | 5 -> 8 | 0.5151
+    582 | 8 -> 2 | 0.6241
+    591 | 8 -> 3 | 0.5062
+    619 | 1 -> 8 | 0.5589
+    628 | 3 -> 9 | 0.8086
+    659 | 2 -> 8 | 0.5485
+    684 | 7 -> 3 | 0.8381
+    691 | 8 -> 4 | 0.9721
+    707 | 4 -> 9 | 0.8640
+              precision    recall  f1-score   support
+
+           0     0.9691    0.9918    0.9803       980
+           1     0.9885    0.9877    0.9881      1135
+           2     0.9832    0.9641    0.9736      1032
+           3     0.9614    0.9851    0.9731      1010
+           4     0.9736    0.9766    0.9751       982
+           5     0.9883    0.9439    0.9656       892
+           6     0.9709    0.9749    0.9729       958
+           7     0.9756    0.9718    0.9737      1028
+           8     0.9527    0.9713    0.9619       974
+           9     0.9720    0.9633    0.9676      1009
+
+    accuracy                         0.9735     10000
+   macro avg     0.9735    0.9731    0.9732     10000
+weighted avg     0.9737    0.9735    0.9735     10000
+
+Top 5 confusiones (real -> predicho):
+   5 -> 3 : 17 casos (1.91 % de los dígitos '5')
+   2 -> 8 : 12 casos (1.16 % de los dígitos '2')
+   9 -> 4 : 10 casos (0.99 % de los dígitos '9')
+   5 -> 8 : 10 casos (1.12 % de los dígitos '5')
+   4 -> 9 : 10 casos (1.02 % de los dígitos '4')
+
+Clase con mejor recall : 0 (0.9918)
+Clase con peor  recall : 5 (0.9439)
+Subconjunto del experimento: 18000 imágenes
+
+ Neuronas   Parámetros  Test loss  Test acc  Segundos
+-----------------------------------------------------
+       32       25,450     0.3170    0.9124       0.5
+      128      101,770     0.2500    0.9311       0.7
+      256      203,530     0.2247    0.9328       0.8

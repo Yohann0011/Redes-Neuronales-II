@@ -1,0 +1,86 @@
+NumPy: 2.4.6
+Herramientas cargadas correctamente
+Matriz de características X: (20, 3) -> (20 frutas, 3 características)
+Vector de etiquetas   y: (20,) -> (0 = manzana, 1 = banano)
+
+Primeras 3 manzanas:
+ [[1.50e+02 7.50e+00 1.00e-01]
+ [1.60e+02 8.00e+00 1.50e-01]
+ [1.45e+02 7.20e+00 5.00e-02]]
+Primeros 3 bananos:
+ [[120.    18.     0.9 ]
+ [125.    19.     0.95]
+ [115.    17.5    0.85]]
+X_train: (16, 3) | X_test: (4, 3)
+y_train: (16,) | y_test: (4,)
+Distribución de clases en prueba: [2 2]
+
+Media de cada característica en entrenamiento (debe ser ~0):
+[0. 0. 0.]
+Desviación estándar (debe ser ~1):
+[1. 1. 1.]
+Pesos iniciales w = [ 0.004967 -0.001383  0.006477]
+Bias inicial    b = 0.0
+
+Predicciones iniciales (sin entrenar): [1 1 0 0 1 1 0 0 0 1 1 0 1 0 1 1]
+Etiquetas reales                    : [0 0 1 1 1 1 1 0 0 1 1 0 1 0 0 0]
+Aciertos iniciales: 9 de 16
+=== ITERACIÓN 1 (paso a paso) ===
+ #         z y_hat   y  error   acción
+ 0    0.0008     1   0     -1   se actualizan w y b
+ 1   -0.4165     0   0      0   sin cambio (acierto)
+ 2    0.1824     1   1      0   sin cambio (acierto)
+ 3    0.2019     1   1      0   sin cambio (acierto)
+ 4    0.1825     1   1      0   sin cambio (acierto)
+ 5    0.1827     1   1      0   sin cambio (acierto)
+ 6    0.1898     1   1      0   sin cambio (acierto)
+ 7   -0.3535     0   0      0   sin cambio (acierto)
+ 8   -0.3923     0   0      0   sin cambio (acierto)
+ 9    0.1801     1   1      0   sin cambio (acierto)
+10    0.2022     1   1      0   sin cambio (acierto)
+11   -0.3422     0   0      0   sin cambio (acierto)
+12    0.2020     1   1      0   sin cambio (acierto)
+13   -0.3769     0   0      0   sin cambio (acierto)
+14   -0.3898     0   0      0   sin cambio (acierto)
+15   -0.4545     0   0      0   sin cambio (acierto)
+
+Pesos tras la iteración 1: [-0.105816  0.092776  0.099898]
+Bias  tras la iteración 1: -0.1
+Época   0 | actualizaciones:  1 | accuracy entrenamiento: 1.0000
+Época   1 | actualizaciones:  0 | accuracy entrenamiento: 1.0000
+
+>>> Convergió en la época 1: ninguna predicción fue incorrecta.
+
+Pesos finales   w = [-0.1058  0.0928  0.0999]
+Bias final      b = -0.1
+Épocas usadas     = 2
+=== PREDICCIONES EN EL CONJUNTO DE PRUEBA ===
+ Fruta   Prob. z   Predicción         Real  Resultado
+     1   -0.3171      MANZANA      MANZANA    ACIERTO
+     2   -0.4295      MANZANA      MANZANA    ACIERTO
+     3    0.1904       BANANO       BANANO    ACIERTO
+     4    0.1984       BANANO       BANANO    ACIERTO
+
+Accuracy en prueba: 1.0
+
+Matriz de confusión (filas = reales, columnas = predichas):
+[[2 0]
+ [0 2]]
+
+              precision    recall  f1-score   support
+
+     Manzana       1.00      1.00      1.00         2
+      Banano       1.00      1.00      1.00         2
+
+    accuracy                           1.00         4
+   macro avg       1.00      1.00      1.00         4
+weighted avg       1.00      1.00      1.00         4
+
+Lectura de los pesos:
+ · La característica con mayor |peso| domina la decisión.
+ · |w| = [0.1058 0.0928 0.0999]
+Fruta nueva (peso, longitud, amarillo): [124.    19.     0.94]
+Valores escalados                     : [-0.9271  0.9614  0.9859]
+z = w·x + b                           : 0.1858
+step(z)                               : 1
+La red piensa que es                  : BANANO

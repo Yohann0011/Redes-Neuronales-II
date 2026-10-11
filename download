@@ -1,0 +1,16 @@
+# Datos descargados por los notebooks (MNIST se descarga automáticamente)
+data/
+*.npz
+*.gz
+*.ubyte
+
+# Entornos y caches
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+venv/
+.env
+
+# Sistema
+.DS_Store
+Thumbs.db
